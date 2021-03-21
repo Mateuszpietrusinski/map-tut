@@ -8,6 +8,7 @@
       <div class="text">
         <h3>{{ user.fullName }}</h3>
         <p>{{ user.description }}</p>
+        <p>{{ user.inputValue }}</p>
       </div>
 
       <div class="actions">
@@ -33,6 +34,11 @@
 <script>
 export default {
   name: "UserCard",
+  data() {
+    return {
+      text: "",
+    };
+  },
   props: {
     user: {
       type: Object,

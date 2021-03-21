@@ -36,7 +36,7 @@ export default {
     },
     onUserEdit(id) {
       const t0 = performance.now();
-      const user = this.usersArray.find((user) => user.id == id);
+      const user = this.usersArray.find((user) => user.id === id);
       user.description = "I'm super updated content";
       const t1 = performance.now();
       console.log(`Edit took ${t1 - t0} milliseconds.`);
