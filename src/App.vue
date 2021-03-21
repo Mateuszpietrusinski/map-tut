@@ -1,28 +1,50 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div class="container">
+      <div class="flex">
+        <UserCard v-for="user in users" :key="user.id" :user="user" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import UserCard from "./components/UserCard.vue";
+import mockData from "./assets/mock_data";
 export default {
   name: "App",
+  data() {
+    return {
+      users: [],
+    };
+  },
   components: {
-    HelloWorld,
+    UserCard,
+  },
+  created() {
+    const { mockDataArray } = mockData;
+
+    this.users = mockDataArray();
   },
 };
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  padding-top: 30px;
+}
+
+body {
+  background: #eee;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>
