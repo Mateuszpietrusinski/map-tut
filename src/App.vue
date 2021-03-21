@@ -2,7 +2,13 @@
   <div id="app">
     <div class="container">
       <div class="flex">
-        <UserCard v-for="user in users" :key="user.id" :user="user" />
+        <UserCard
+          v-for="user in usersArray"
+          :key="user.id"
+          :user="user"
+          @edit="onUserEdit"
+          @delete="onUserDelete"
+        />
       </div>
     </div>
   </div>
@@ -15,16 +21,26 @@ export default {
   name: "App",
   data() {
     return {
-      users: [],
+      usersArray: mockData.mockDataArray(),
     };
   },
   components: {
     UserCard,
   },
-  created() {
-    const { mockDataArray } = mockData;
-
-    this.users = mockDataArray();
+  methods: {
+    onUserDelete(id) {
+      const t0 = performance.now();
+      this.usersArray = this.usersArray.filter((user) => user.id !== id);
+      const t1 = performance.now();
+      console.log(`Delete took ${t1 - t0} milliseconds.`);
+    },
+    onUserEdit(id) {
+      const t0 = performance.now();
+      const user = this.usersArray.find((user) => user.id == id);
+      user.description = "I'm super updated content";
+      const t1 = performance.now();
+      console.log(`Edit took ${t1 - t0} milliseconds.`);
+    },
   },
 };
 </script>
