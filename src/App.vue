@@ -15,29 +15,35 @@
 </template>
 
 <script>
+import Vue from "vue";
 import UserCard from "./components/UserCard.vue";
 import mockData from "./assets/mock_data";
 export default {
   name: "App",
-  data() {
-    return {
-      usersArray: mockData.mockDataArray(),
-    };
-  },
   components: {
     UserCard,
   },
+  data() {
+    return {
+      usersObj: mockData.mockDataObject(),
+    };
+  },
+  computed: {
+    usersArray() {
+      return Object.values(this.usersObj);
+    },
+  },
   methods: {
     onUserDelete(id) {
+      console.log(id);
       const t0 = performance.now();
-      this.usersArray = this.usersArray.filter((user) => user.id !== id);
+      Vue.delete(this.usersObj, id);
       const t1 = performance.now();
       console.log(`Delete took ${t1 - t0} milliseconds.`);
     },
     onUserEdit(id) {
       const t0 = performance.now();
-      const user = this.usersArray.find((user) => user.id === id);
-      user.description = "I'm super updated content";
+      this.usersObj[id].description = "I'm super updated content";
       const t1 = performance.now();
       console.log(`Edit took ${t1 - t0} milliseconds.`);
     },
