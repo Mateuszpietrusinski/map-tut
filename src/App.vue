@@ -35,7 +35,6 @@ export default {
   },
   methods: {
     onUserDelete(id) {
-      console.log(id);
       const t0 = performance.now();
       Vue.delete(this.usersObj, id);
       const t1 = performance.now();
