@@ -3,7 +3,7 @@ import faker from "faker";
 
 const mockDataArray = () => {
   let data = [];
-  Array.from(Array(10000).keys()).forEach(() => {
+  Array.from(Array(10).keys()).forEach(() => {
     data = [
       ...data,
       {
