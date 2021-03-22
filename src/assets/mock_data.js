@@ -23,14 +23,7 @@ const mockDataObject = () => {
   return mockDataObj;
 };
 
-const mockDataMap = () => {
-  const mockDataMap = new Map();
-  mockDataArray().forEach((el) => mockDataMap.set(el.id, el));
-  return mockDataMap;
-};
-
 export default {
   mockDataArray,
   mockDataObject,
-  mockDataMap,
 };
