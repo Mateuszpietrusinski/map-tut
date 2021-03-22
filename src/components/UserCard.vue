@@ -8,7 +8,6 @@
       <div class="text">
         <h3>{{ user.fullName }}</h3>
         <p>{{ user.description }}</p>
-        <p>{{ user.inputValue }}</p>
       </div>
 
       <div class="actions">
