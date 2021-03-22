@@ -3,7 +3,7 @@ import faker from "faker";
 
 const mockDataArray = () => {
   let data = [];
-  Array.from(Array(1000).keys()).forEach(() => {
+  Array.from(Array(10).keys()).forEach(() => {
     data = [
       ...data,
       {
@@ -17,20 +17,6 @@ const mockDataArray = () => {
   return data;
 };
 
-const mockDataObject = () => {
-  const mockDataObj = {};
-  mockDataArray().forEach((el) => (mockDataObj[el.id] = el));
-  return mockDataObj;
-};
-
-const mockDataMap = () => {
-  const mockDataMap = new Map();
-  mockDataArray().forEach((el) => mockDataMap.set(el.id, el));
-  return mockDataMap;
-};
-
 export default {
   mockDataArray,
-  mockDataObject,
-  mockDataMap,
 };
